@@ -27,5 +27,23 @@
         </div>
     </div>
 
+    <div th:fragment="results" class="text">
+        <div th:if="${list}">
+            <p th:text="'You found ' + ${list.size()} + ' entries!'"></p>
+        </div>
+    </div>
+
+    <div th:fragment="maps" class="text">
+        <div th:each="maps : ${list}">
+            <table class="job-listing">
+                <tr th:each="row : ${maps}">
+                    <td th:text="${#strings.capitalizeWords(row.key)}"> </td>
+                    <td th:text="${row.value}"> </td>
+                </tr>
+             </table>
+        <hr />
+        </div>
+    </div>
+
 </body>
 </html>

@@ -10,6 +10,8 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
+    <div th:replace="fragments :: results"></div>
+
     <div th:if="${items} and ${items.size()}">
 
         <table>
