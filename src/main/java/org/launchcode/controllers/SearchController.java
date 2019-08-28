@@ -19,6 +19,7 @@ public class SearchController {
     @RequestMapping(value = "")
     public String search(Model model) {
         model.addAttribute("columns", ListController.columnChoices);
+        model.addAttribute("searchType", "all");
         return "search";
     }
 
@@ -32,12 +33,8 @@ public class SearchController {
         //get a list of jobs based on user input.
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
 
-        if ((searchType.equals("all")) && searchTerm == "") {
-            list = JobData.findAll();
-        }
-
         if ((searchType.equals("all")) && searchTerm != "") {
-            list = JobData.findByColumnAndValue(searchType, searchTerm);
+            list = JobData.findByValue(searchTerm);
 
         }
 
